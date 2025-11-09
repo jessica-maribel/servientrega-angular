@@ -1,0 +1,42 @@
+<mat-card>
+  <h2>Agregar guía</h2>
+  <form [formGroup]="form" (ngSubmit)="save()" class="grid gap-4">
+    <mat-card class="p-4">
+      <h3>Remitente</h3>
+      <div class="grid gap-4" formGroupName="sender">
+        <mat-form-field appearance="outline"><mat-label>Nombre</mat-label><input matInput formControlName="name" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Teléfono</mat-label><input matInput formControlName="phone" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Dirección</mat-label><input matInput formControlName="address_line" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Ciudad</mat-label><input matInput formControlName="city" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Provincia</mat-label><input matInput formControlName="province" /></mat-form-field>
+      </div>
+    </mat-card>
+
+    <mat-card class="p-4">
+      <h3>Destinatario</h3>
+      <div class="grid gap-4" formGroupName="recipient">
+        <mat-form-field appearance="outline"><mat-label>Nombre</mat-label><input matInput formControlName="name" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Teléfono</mat-label><input matInput formControlName="phone" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Dirección</mat-label><input matInput formControlName="address_line" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Ciudad</mat-label><input matInput formControlName="city" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Provincia</mat-label><input matInput formControlName="province" /></mat-form-field>
+      </div>
+    </mat-card>
+
+    <mat-card class="p-4" formArrayName="items">
+      <h3>Ítems</h3>
+      <div *ngFor="let _ of items.controls; let i = index" [formGroupName]="i" class="grid gap-4 mb-2">
+        <mat-form-field appearance="outline"><mat-label>Descripción</mat-label><input matInput formControlName="description" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Cantidad</mat-label><input matInput type="number" formControlName="qty" /></mat-form-field>
+        <mat-form-field appearance="outline"><mat-label>Peso (kg)</mat-label><input matInput type="number" step="0.01" formControlName="weight_kg" /></mat-form-field>
+        <button mat-stroked-button type="button" (click)="removeItem(i)" *ngIf="items.length>1">Quitar</button>
+      </div>
+      <button mat-stroked-button type="button" (click)="addItem()">+ Ítem</button>
+    </mat-card>
+
+    <div class="flex items-center gap-4">
+      <button mat-raised-button color="primary" [disabled]="loading">Guardar</button>
+      <mat-progress-spinner *ngIf="loading" diameter="24" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  </form>
+</mat-card>
