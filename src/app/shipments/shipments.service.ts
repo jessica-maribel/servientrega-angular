@@ -12,15 +12,15 @@ export class ShipmentsService {
   constructor(private http: HttpClient) {}
 
   createShipment(payload: CreateShipmentRequest): Observable<CreateShipmentResponse> {
-    return this.http.post<CreateShipmentResponse>(`${this.base}/shipments`, payload);
+    return this.http.post<CreateShipmentResponse>(`${this.base}/guias`, payload);
   }
 
   listShipments(onlyActive = true): Observable<ShipmentListItem[]> {
     const params = new HttpParams().set('active', String(onlyActive));
-    return this.http.get<ShipmentListItem[]>(`${this.base}/shipments`, { params });
+    return this.http.get<ShipmentListItem[]>(`${this.base}/guias`, { params });
   }
 
   getTracking(shipmentId: string): Observable<TrackingResponse> {
-    return this.http.get<TrackingResponse>(`${this.base}/shipments/${shipmentId}/tracking`);
+    return this.http.get<TrackingResponse>(`${this.base}/guias/${shipmentId}/tracking`);
   }
 }

@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {  // 👈 implementa OnInit
   loading = false;
 
   form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    username: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
 
