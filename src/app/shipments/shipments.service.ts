@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { CreateShipmentRequest, CreateShipmentResponse, ShipmentListItem } from '../shared/models/shipment';
-import { TrackingResponse } from '../shared/models/tracking';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { Guia, CreateGuiaRequest } from '../shared/models/guia';
 
 @Injectable({ providedIn: 'root' })
 export class ShipmentsService {
@@ -11,16 +10,18 @@ export class ShipmentsService {
 
   constructor(private http: HttpClient) {}
 
-  createShipment(payload: CreateShipmentRequest): Observable<CreateShipmentResponse> {
-    return this.http.post<CreateShipmentResponse>(`${this.base}/guias`, payload);
+  createShipment(payload: CreateGuiaRequest): Observable<Guia> {
+    return this.http.post<Guia>(`${this.base}/guias`, payload);
   }
 
-  listShipments(onlyActive = true): Observable<ShipmentListItem[]> {
+  listShipments(onlyActive = true): Observable<Guia[]> {
     const params = new HttpParams().set('activo', String(onlyActive));
-    return this.http.get<ShipmentListItem[]>(`${this.base}/guias`);
+    return this.http.get<any>(`${this.base}/guias`, { params }).pipe(
+      map((res: any) => Array.isArray(res) ? res as Guia[] : (res?.data as Guia[]) ?? [])
+    );
   }
 
-  getTracking(shipmentId: string): Observable<TrackingResponse> {
-    return this.http.get<TrackingResponse>(`${this.base}/guias/${shipmentId}`);
+  getGuia(id: string): Observable<Guia> {
+    return this.http.get<Guia>(`${this.base}/guias/${id}`);
   }
 }

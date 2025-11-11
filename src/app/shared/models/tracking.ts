@@ -1,12 +1,10 @@
-export interface TrackingEvent {
-  timestamp: string;
-  location: string;
-  description: string;
-}
+export {
+  Guia,
+  DireccionParte,
+  ItemGuia,
+  EstadoGuia,
+  CreateGuiaRequest,
+} from './guia';
 
-export interface TrackingResponse {
-  _id: string;
-  status: string;
-  eta?: string;
-  events: TrackingEvent[];
-}
+export type Tracking = import('./guia').Guia;
+

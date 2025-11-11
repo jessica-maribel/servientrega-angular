@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ShipmentsService } from '../shipments.service';
-import { TrackingResponse } from '../../shared/models/tracking';
+import { Guia } from '../../shared/models/guia';
 
 @Component({
   selector: 'app-tracking',
@@ -9,7 +9,7 @@ import { TrackingResponse } from '../../shared/models/tracking';
   styleUrls: ['./tracking.component.scss']
 })
 export class TrackingComponent {
-  result?: TrackingResponse;
+  result?: Guia;
   loading = false;
 
   form = this.fb.group({ id: ['', Validators.required] });
@@ -19,7 +19,7 @@ export class TrackingComponent {
   search() {
     if (this.form.invalid) return;
     this.loading = true;
-    this.api.getTracking(this.form.value.id!).subscribe({
+    this.api.getGuia(this.form.value.id!).subscribe({
       next: res => { this.result = res; this.loading = false; },
       error: () => { this.result = undefined; this.loading = false; }
     });
