@@ -5,7 +5,7 @@ export interface TrackingEvent {
 }
 
 export interface TrackingResponse {
-  shipment_id: string;
+  _id: string;
   status: string;
   eta?: string;
   events: TrackingEvent[];

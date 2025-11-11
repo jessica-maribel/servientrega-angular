@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./list-guides.component.scss']
 })
 export class ListGuidesComponent implements AfterViewInit {
-  displayedColumns = ['shipment_id', 'status', 'active', 'created_at'];
+  displayedColumns = ['_id', 'estado', 'activo', 'createdAt'];
   data = new MatTableDataSource<ShipmentListItem>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

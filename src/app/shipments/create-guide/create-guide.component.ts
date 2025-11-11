@@ -12,7 +12,7 @@ export class CreateGuideComponent {
   loading = false;
 
   form = this.fb.group({
-    sender: this.fb.group({
+    remitente: this.fb.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
       address_line: ['', Validators.required],
@@ -22,7 +22,7 @@ export class CreateGuideComponent {
       lat: [null],
       lng: [null]
     }),
-    recipient: this.fb.group({
+    destinatario: this.fb.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
       address_line: ['', Validators.required],
@@ -66,9 +66,9 @@ export class CreateGuideComponent {
     this.api.createShipment(this.form.value as any).subscribe({
       next: res => {
         this.loading = false;
-        this.snack.open(`Guía creada: ${res.shipment_id}`, 'OK', { duration: 3000 });
+        this.snack.open(`Guía creada: ${res._id}`, 'OK', { duration: 3000 });
       },
       error: e => { this.loading = false; this.snack.open(e?.error?.message || 'Error al crear guía', 'OK', { duration: 3000 }); }
     });
   }
-}
+} 

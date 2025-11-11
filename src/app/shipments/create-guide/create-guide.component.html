@@ -3,7 +3,7 @@
   <form [formGroup]="form" (ngSubmit)="save()" class="grid gap-4">
     <mat-card class="p-4">
       <h3>Remitente</h3>
-      <div class="grid gap-4" formGroupName="sender">
+      <div class="grid gap-4" formGroupName="remitente">
         <mat-form-field appearance="outline"><mat-label>Nombre</mat-label><input matInput formControlName="name" /></mat-form-field>
         <mat-form-field appearance="outline"><mat-label>Teléfono</mat-label><input matInput formControlName="phone" /></mat-form-field>
         <mat-form-field appearance="outline"><mat-label>Dirección</mat-label><input matInput formControlName="address_line" /></mat-form-field>
@@ -14,7 +14,7 @@
 
     <mat-card class="p-4">
       <h3>Destinatario</h3>
-      <div class="grid gap-4" formGroupName="recipient">
+      <div class="grid gap-4" formGroupName="destinatario">
         <mat-form-field appearance="outline"><mat-label>Nombre</mat-label><input matInput formControlName="name" /></mat-form-field>
         <mat-form-field appearance="outline"><mat-label>Teléfono</mat-label><input matInput formControlName="phone" /></mat-form-field>
         <mat-form-field appearance="outline"><mat-label>Dirección</mat-label><input matInput formControlName="address_line" /></mat-form-field>

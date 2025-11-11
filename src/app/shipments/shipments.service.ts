@@ -16,11 +16,11 @@ export class ShipmentsService {
   }
 
   listShipments(onlyActive = true): Observable<ShipmentListItem[]> {
-    const params = new HttpParams().set('active', String(onlyActive));
-    return this.http.get<ShipmentListItem[]>(`${this.base}/guias`, { params });
+    const params = new HttpParams().set('activo', String(onlyActive));
+    return this.http.get<ShipmentListItem[]>(`${this.base}/guias`);
   }
 
   getTracking(shipmentId: string): Observable<TrackingResponse> {
-    return this.http.get<TrackingResponse>(`${this.base}/guias/${shipmentId}/tracking`);
+    return this.http.get<TrackingResponse>(`${this.base}/guias/${shipmentId}`);
   }
 }

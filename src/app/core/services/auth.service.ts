@@ -4,7 +4,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { LoginRequest, LoginResponse } from '../../shared/models/auth';
 
-const TOKEN_KEY = 'auth_token';
+const TOKEN_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTEwMjc2ZTFjMWEyOWJhZjk4ODg1NiIsInVzZXJuYW1lIjoiYWRtaW5Ac2VydmkuY29tIiwiaWF0IjoxNzYyODI5ODg0LCJleHAiOjE3NjI4MzM0ODR9.ruDaf2ShHFpM43mB4rutfiCz5GI-S1tzQ3Jd1exXOdc';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

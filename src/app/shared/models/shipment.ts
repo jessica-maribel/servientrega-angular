@@ -27,14 +27,14 @@ export interface CreateShipmentRequest {
 }
 
 export interface CreateShipmentResponse {
-  shipment_id: string;
+  _id: string;
   status: 'pending' | 'in_transit' | 'delivered' | string;
   estimated_pickup_time?: string;
 }
 
 export interface ShipmentListItem {
-  shipment_id: string;
-  status: string;
-  active: boolean;
-  created_at: string;
+  _id: string;
+  estado: string;
+  activo: boolean;
+  createdAt: string;
 }

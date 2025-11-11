@@ -1,24 +1,24 @@
 <mat-card>
   <h2>Lista de guías</h2>
   <table mat-table [dataSource]="data" class="w-full">
-    <ng-container matColumnDef="shipment_id">
+    <ng-container matColumnDef="_id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let row">{{ row.shipment_id }}</td>
+      <td mat-cell *matCellDef="let row">{{ row}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="status">
+    <ng-container matColumnDef="estado">
       <th mat-header-cell *matHeaderCellDef> Estado </th>
-      <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.estado }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="active">
+    <ng-container matColumnDef="activo">
       <th mat-header-cell *matHeaderCellDef> Activo </th>
-      <td mat-cell *matCellDef="let row">{{ row.active ? 'Sí' : 'No' }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.activo ? 'Sí' : 'No' }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="created_at">
+    <ng-container matColumnDef="createdAt">
       <th mat-header-cell *matHeaderCellDef> Creado </th>
-      <td mat-cell *matCellDef="let row">{{ row.created_at | date:'short' }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.createdAt | date:'short' }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
